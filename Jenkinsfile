@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'microsoft/dotnet:2.1-sdk'
+            image 'maven:3.6.2-jdk-11'
             args '-v /root/.m2:/root/.m2'
             args '--network=docker-jenkins-sonarqube'
         }
@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Build and Test') {
             steps {
-                sh 'dotnet build'
+                sh 'mvn clean build'
             }
         }
         stage('Sonar') {
