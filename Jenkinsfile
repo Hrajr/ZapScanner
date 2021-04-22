@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Build and Test') {
             steps {
-                sh 'mvn clean build'
+                bat 'dotnet build'
             }
         }
         stage('Sonar') {
